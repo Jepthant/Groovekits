@@ -67,6 +67,17 @@
       background-color: #00cc77;
     }
 
+    button.fade-in {
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -99,6 +110,19 @@
       display: none;
       margin-top: 1rem;
     }
+
+    #popup {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #00ff99;
+      color: #000;
+      padding: 1rem;
+      border-radius: 5px;
+      z-index: 999;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -121,61 +145,67 @@
     <h2>🎶 Kits Room</h2>
 
     <div class="kit locked">
-      <h3>Kick Kit</h3>
+      <h3>🥁 Kick Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>808 Kit</h3>
+      <h3>🔊 808 Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Clap Kit</h3>
+      <h3>👏 Clap Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Drum Loops Kit</h3>
+      <h3>🎛️ Drum Loops Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Fills & Rollings</h3>
+      <h3>💥 Fills & Rollings</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>FX Kit</h3>
+      <h3>🎚️ FX Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Hi-Hat Kit</h3>
+      <h3>🎶 Hi-Hat Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Melodies Kit</h3>
+      <h3>🎹 Melodies Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Perc Kit</h3>
+      <h3>🥁 Perc Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Rim Kit</h3>
+      <h3>🔔 Rim Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Shaker Kit</h3>
+      <h3>🪘 Shaker Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Snare Kit</h3>
+      <h3>🥁 Snare Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
     <div class="kit locked">
-      <h3>Vox Kit</h3>
+      <h3>🎤 Vox Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
   </section>
 
+  <div id="popup">✅ Kits Unlocked!</div>
+
   <footer>
     <p>© 2025 Groovekits. Powered by Mugisha Emmanuel.</p>
+    <p>Follow us:
+      <a href="https://youtube.com/@Groovekits" target="_blank">YouTube</a> |
+      <a href="https://instagram.com/groovekits" target="_blank">Instagram</a>
+    </p>
   </footer>
 
   <script>
@@ -207,9 +237,15 @@
         kit.classList.remove('locked');
         const button = kit.querySelector('button');
         button.textContent = 'Download';
+        button.classList.add('fade-in');
         button.onclick = () => window.open(kitLinks[index], '_blank');
       });
       document.getElementById('subscribe-section').style.display = 'none';
+      document.getElementById('popup').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('popup').style.display = 'none';
+      }, 3000);
+      document.querySelector('.kits').scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
