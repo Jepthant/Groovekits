@@ -204,9 +204,16 @@
     <p>© 2025 Groovekits. Powered by Mugisha Emmanuel.</p>
     <p>Follow us:
       <a href="https://youtube.com/@Groovekits" target="_blank">YouTube</a> |
-      <a href="https://instagram.com/groovekits" target="_blank">Instagram</a>
+      <a href="https://www.instagram.com/groovekits/" target="_blank">Instagram</a>
     </p>
   </footer>
+
+  <div style="text-align:center; margin: 1rem 0;">
+    <button onclick="toggleMusic()">🔈 Pause Music</button>
+    <label style="margin-left: 1rem;">Volume:
+      <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
+    </label>
+  </div>
 
   <script>
     const kitLinks = [
@@ -247,6 +254,26 @@
       }, 3000);
       document.querySelector('.kits').scrollIntoView({ behavior: 'smooth' });
     }
-  </script>
+  function toggleMusic() {
+  const music = document.getElementById('bg-music');
+  const button = document.querySelector('button[onclick="toggleMusic()"]');
+  if (music.paused) {
+    music.play();
+    button.textContent = '🔈 Pause Music';
+  } else {
+    music.pause();
+    button.textContent = '🔊 Play Music';
+  }
+}
+
+function setVolume(val) {
+  const music = document.getElementById('bg-music');
+  music.volume = val;
+}
+</script>
+  <audio id="bg-music" autoplay loop style="display: none;">
+    <source src="audio/background.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 </body>
 </html>
