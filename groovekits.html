@@ -67,17 +67,6 @@
       background-color: #00cc77;
     }
 
-    button.fade-in {
-      animation: fadeIn 0.8s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
     footer {
       text-align: center;
       padding: 1rem;
@@ -110,19 +99,6 @@
       display: none;
       margin-top: 1rem;
     }
-
-    #popup {
-      display: none;
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #00ff99;
-      color: #000;
-      padding: 1rem;
-      border-radius: 5px;
-      z-index: 999;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
@@ -145,156 +121,162 @@
     <h2>🎶 Kits Room</h2>
 
     <div class="kit locked">
-      <h3>🥁 Kick Kit</h3>
+      <h3>Kick Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🔊 808 Kit</h3>
+      <h3>808 Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>👏 Clap Kit</h3>
+      <h3>Clap Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🎛️ Drum Loops Kit</h3>
+      <h3>Drum Loops Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>💥 Fills & Rollings</h3>
+      <h3>Fills & Rollings</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🎚️ FX Kit</h3>
+      <h3>FX Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🎶 Hi-Hat Kit</h3>
+      <h3>Hi-Hat Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🎹 Melodies Kit</h3>
+      <h3>Melodies Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🥁 Perc Kit</h3>
+      <h3>Perc Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🔔 Rim Kit</h3>
+      <h3>Rim Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🪘 Shaker Kit</h3>
+      <h3>Shaker Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🥁 Snare Kit</h3>
+      <h3>Snare Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
+
     <div class="kit locked">
-      <h3>🎤 Vox Kit</h3>
+      <h3>Vox Kit</h3>
       <button onclick="window.open('#', '_blank')">Locked</button>
     </div>
   </section>
 
-  <div id="popup">✅ Kits Unlocked!</div>
-
   <footer>
     <p>© 2025 Groovekits. Powered by Mugisha Emmanuel.</p>
-    <p>Follow us:
-      <a href="https://youtube.com/@Groovekits" target="_blank">YouTube</a> |
-      <a href="https://www.instagram.com/groovekits/" target="_blank">Instagram</a>
-    </p>
   </footer>
+
+  <audio id="bg-music" autoplay loop style="display: none;">
+    <source src="https://raw.githubusercontent.com/Jepthant/Groovekits/main/background.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
   <div style="text-align:center; margin: 1rem 0;">
     <button onclick="toggleMusic()">🔈 Pause Music</button>
-    <label style="margin-left: 1rem;">Volume:
+    <label style="margin-left: 1rem; color: #ccc;">Volume:
       <input type="range" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
     </label>
   </div>
 
   <script>
-    const kitLinks = [
-      "https://drive.google.com/drive/folders/1JpJ37FKbkUCUxK6iOf6ELGzyueIm760f?usp=drive_link",
-      "https://drive.google.com/drive/folders/1NfSVgT0883PMDIr98NOd8PDM7El_LGOw?usp=drive_link",
-      "https://drive.google.com/drive/folders/1lkYlAizfVFrLB-aVAJ7rVY8oHvFKslki?usp=drive_link",
-      "https://drive.google.com/drive/folders/1g4Ki1ZNTmBFw1ITD2yYxObZe8XEjGI6w?usp=drive_link",
-      "https://drive.google.com/drive/folders/13Z3pL3ve8dODgS0Mz5VVME03hYRIhoLM?usp=drive_link",
-      "https://drive.google.com/drive/folders/1uSa9s4PdVXS7HS7UttkCCt9q7cq127_X?usp=drive_link",
-      "https://drive.google.com/drive/folders/1mSCvjASgn0AvaEGFPTDgn9RzbltAbXq7?usp=drive_link",
-      "https://drive.google.com/drive/folders/19WjBfCT2AJSW4aBFB5EMOZvVFBKENS8b?usp=drive_link",
-      "https://drive.google.com/drive/folders/1NcFT8n0t8x7LSmqGeTJDHvjX3lGSngla?usp=drive_link",
-      "https://drive.google.com/drive/folders/1oVecVPbaUqnoUgGY4-J24zSlQOZ8Olje?usp=drive_link",
-      "https://drive.google.com/drive/folders/1EYiGEjGvQOYQH8ObaqUWMqyIoa0vdue2?usp=drive_link",
-      "https://drive.google.com/drive/folders/1PCaColRRReCPTvC2AhITy4F8E2T91XiJ?usp=drive_link",
-      "https://drive.google.com/drive/folders/1ViwSVPZ5sT9GAzk6FB6Yc1EjR9ImGqNw?usp=drive_link"
-    ];
-
     document.querySelector('a[href*="@Groovekits"] button').addEventListener('click', () => {
       setTimeout(() => {
-        document.getElementById('confirm-sub-btn').style.display = 'inline-block';
-      }, 10000);
+        const confirmButton = document.getElementById('confirm-sub-btn');
+        if (confirmButton) {
+          confirmButton.style.display = 'inline-block';
+        }
+      }, 5000); // show after 5 seconds
     });
 
     function confirmSubscription() {
       const kits = document.querySelectorAll('.kit');
+      kits.forEach(kit => {
+        kit.classList.remove('locked');
+        const button = kit.querySelector('button');
+        button.textContent = 'Download';
+        const kitLinks = [
+        "https://drive.google.com/drive/folders/1JpJ37FKbkUCUxK6iOf6ELGzyueIm760f?usp=drive_link",
+        "https://drive.google.com/drive/folders/1NfSVgT0883PMDIr98NOd8PDM7El_LGOw?usp=drive_link",
+        "https://drive.google.com/drive/folders/1lkYlAizfVFrLB-aVAJ7rVY8oHvFKslki?usp=drive_link",
+        "https://drive.google.com/drive/folders/1g4Ki1ZNTmBFw1ITD2yYxObZe8XEjGI6w?usp=drive_link",
+        "https://drive.google.com/drive/folders/13Z3pL3ve8dODgS0Mz5VVME03hYRIhoLM?usp=drive_link",
+        "https://drive.google.com/drive/folders/1uSa9s4PdVXS7HS7UttkCCt9q7cq127_X?usp=drive_link",
+        "https://drive.google.com/drive/folders/1mSCvjASgn0AvaEGFPTDgn9RzbltAbXq7?usp=drive_link",
+        "https://drive.google.com/drive/folders/19WjBfCT2AJSW4aBFB5EMOZvVFBKENS8b?usp=drive_link",
+        "https://drive.google.com/drive/folders/1NcFT8n0t8x7LSmqGeTJDHvjX3lGSngla?usp=drive_link",
+        "https://drive.google.com/drive/folders/1oVecVPbaUqnoUgGY4-J24zSlQOZ8Olje?usp=drive_link",
+        "https://drive.google.com/drive/folders/1EYiGEjGvQOYQH8ObaqUWMqyIoa0vdue2?usp=drive_link",
+        "https://drive.google.com/drive/folders/1PCaColRRReCPTvC2AhITy4F8E2T91XiJ?usp=drive_link",
+        "https://drive.google.com/drive/folders/1ViwSVPZ5sT9GAzk6FB6Yc1EjR9ImGqNw?usp=drive_link"
+      ];
+
       kits.forEach((kit, index) => {
         kit.classList.remove('locked');
         const button = kit.querySelector('button');
         button.textContent = 'Download';
-        button.classList.add('fade-in');
         button.onclick = () => window.open(kitLinks[index], '_blank');
       });
+      });
       document.getElementById('subscribe-section').style.display = 'none';
-      document.getElementById('popup').style.display = 'block';
-      setTimeout(() => {
-        document.getElementById('popup').style.display = 'none';
-      }, 3000);
-      document.querySelector('.kits').scrollIntoView({ behavior: 'smooth' });
     }
-  function toggleMusic() {
-  const music = document.getElementById('bg-music');
-  const button = document.querySelector('button[onclick="toggleMusic()"]');
-  if (music.paused) {
-    music.play();
-    button.textContent = '🔈 Pause Music';
-  } else {
-    music.pause();
-    button.textContent = '🔊 Play Music';
-  }
-}
 
-function setVolume(val) {
-  const music = document.getElementById('bg-music');
-  music.volume = val;
-}
+    const music = document.getElementById('bg-music');
 
-// Fade-in effect after first user interaction
-function playWithFadeIn() {
-  const music = document.getElementById('bg-music');
-  if (!music.dataset.played) {
-    music.dataset.played = true;
-    music.volume = 0;
-    music.play();
-    let vol = 0;
-    const fade = setInterval(() => {
-      if (vol < 1) {
-        vol += 0.02;
-        music.volume = Math.min(vol, 1);
+    function toggleMusic() {
+      const button = document.querySelector('button[onclick="toggleMusic()"]');
+      if (music.paused) {
+        music.play();
+        button.textContent = '🔈 Pause Music';
       } else {
-        clearInterval(fade);
+        music.pause();
+        button.textContent = '🔊 Play Music';
       }
-    }, 100);
-  }
-}
+    }
 
-window.addEventListener('click', playWithFadeIn, { once: true });
-</script>
-  <audio id="bg-music" autoplay loop style="display: none;">
-    <source src="audio/background.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+    function setVolume(val) {
+      music.volume = val;
+    }
+
+    window.addEventListener('click', () => {
+      if (!music.dataset.played) {
+        music.dataset.played = true;
+        music.volume = 0;
+        music.play();
+        let vol = 0;
+        const fade = setInterval(() => {
+          if (vol < 1) {
+            vol += 0.02;
+            music.volume = Math.min(vol, 1);
+          } else {
+            clearInterval(fade);
+          }
+        }, 100);
+      }
+    }, { once: true });
+  </script>
 </body>
 </html>
