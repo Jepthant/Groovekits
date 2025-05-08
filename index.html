@@ -270,6 +270,27 @@ function setVolume(val) {
   const music = document.getElementById('bg-music');
   music.volume = val;
 }
+
+// Fade-in effect after first user interaction
+function playWithFadeIn() {
+  const music = document.getElementById('bg-music');
+  if (!music.dataset.played) {
+    music.dataset.played = true;
+    music.volume = 0;
+    music.play();
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 1) {
+        vol += 0.02;
+        music.volume = Math.min(vol, 1);
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+  }
+}
+
+window.addEventListener('click', playWithFadeIn, { once: true });
 </script>
   <audio id="bg-music" autoplay loop style="display: none;">
     <source src="audio/background.mp3" type="audio/mp3">
@@ -277,3 +298,4 @@ function setVolume(val) {
   </audio>
 </body>
 </html>
+ 
